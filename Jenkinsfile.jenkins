@@ -15,14 +15,14 @@ pipeline {
                 
             }
         }
-        stage('Test') {
-            steps {
-
-              sh "mvn  verify"
-
-
+   //     stage('Test') {
+   //         steps {
+//
+     //         sh "mvn  verify"
+//
+//
             }
-        }
+   //     }
 
 
 				  

@@ -5,14 +5,20 @@ pipeline {
         stage('Build') {
             steps {
             
-                  sh "mvn clean "
+                 withMaven(  maven: 'maven-tool'  ) {
+                    sh "mvn clean verify"
+
+                 }
 
                 
             }
         }
         stage('Test') {
             steps {
-                 sh "mvn  package"
+                withMaven(  maven: 'maven-tool'  ) {
+      sh "mvn clean verify"
+
+     }
             }
         }
        stage('Static Analysis') {

@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
             
                     sh "mvn clean compile"
@@ -23,11 +23,19 @@ pipeline {
 
             }
         }
-       stage('Static Analysis') {
-            steps {
-                echo 'Testing..'
-            }
-        }
+
+
+				  
+				  stage('SonarQube analysis') {
+				    def scannerHome = tool 'SonarScanner 4.0';
+				    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+				      sh "${scannerHome}/bin/sonar-scanner"
+				    }
+				  }
+
+
+
+
            stage('Artifactory') {
             steps {
                 echo 'Testing..'

@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools { 
         maven 'mvn-tool' 
+       scannerHome 'SonarScanner 4.0'
     }
 
     stages {

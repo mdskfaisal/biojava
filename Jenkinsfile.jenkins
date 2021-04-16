@@ -30,6 +30,14 @@ pipeline {
 
 
         stage('Artifactory') {
+           when {
+              anyOf {
+	            branch 'master';
+	            branch 'develop';
+	            branch 'release.*';
+	            branch 'hotfix.*'
+              }
+        }
             steps {
                 echo 'Testing..'
             }
@@ -37,6 +45,14 @@ pipeline {
 
         
         stage('Deploy') {
+           when {
+              anyOf {
+	            branch 'master';
+	            branch 'develop';
+	            branch 'release.*';
+	            branch 'hotfix.*'
+              }
+        }        
             steps {
                 echo 'Deploying....'
             }

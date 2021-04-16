@@ -17,9 +17,7 @@ pipeline {
          stage('Sonar') {
             steps {
                    
-                   withSonarQubeEnv('My SonarQube Server') { 
-		             sh "${scannerHome}/bin/sonar-scanner" 
-                   }
+                   sh "mvn sonar:sonar   -Dsonar.host.url=http://10.0.0.90:9000   -Dsonar.login=516c8829803aa7105e05812694c6478ed70614cb"
             }
         }  
 

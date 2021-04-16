@@ -1,24 +1,26 @@
 pipeline {
     agent any
+    tools { 
+        maven 'mvn-tool' 
+    }
 
     stages {
         stage('Build') {
             steps {
             
-                 withMaven(  maven: 'maven-tool'  ) {
                     sh "mvn clean verify"
 
-                 }
+                 
 
                 
             }
         }
         stage('Test') {
             steps {
-                withMaven(  maven: 'maven-tool'  ) {
-      sh "mvn clean verify"
 
-     }
+              sh "mvn clean verify"
+
+
             }
         }
        stage('Static Analysis') {
